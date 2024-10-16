@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<html>
+<head>
+<style>
+.question {
+font-size: 4em;
+}
+.btn {
+width: 300px;
+height: 200px;
+font-size: 4em;
+touch-action: manipulation;
+}
+.btn2 {
+width: 600px;
+height: 200px;
+font-size: 4em;
+touch-action: manipulation;
+}
+</style>
+<script language=javascript>
+var sdata=
+"ა-А;"+
+"ბ-Б;"+
+"გ-Г;"+
+"დ-Д;"+
+"ე-Э;"+
+"ვ-В;"+
+"ზ-З;"+
+"თ-Т';"+
+"ი-И;"+
+"კ-К;"+
+"ლ-Л;"+
+"მ-М;"+
+"ნ-Н;"+
+"ო-О;"+
+"პ-П;"+
+"ჟ-Ж;"+
+"რ-Р;"+
+"ს-С;"+
+"ტ-Т (тв.);"+
+"უ-У;"+
+"ფ-П'(как ф);"+
+"ქ-К';"+
+"ღ-Г(укр);"+
+"ყ-К(горт);"+
+"შ-Ш;"+
+"ჩ-Ч"+
+"ც-Ц;"+
+"ძ-Дз;"+
+"წ-Ц(тв);"+
+"ჭ-Ч(тв);"+
+"ხ-Х;"+
+"ჯ-Дж;"+
+"ჰ-Х'(возд);"+
+"";
+
+var gletter=Array();
+function rnd(v) {
+	return Math.floor(Math.random()*v);
+}
+function onLoad() {
+	var ssdata=sdata.split(';');
+	for (var i = 0; i < ssdata.length; i++) {
+		var gr = ssdata[i].split('-');
+		if (gr.length == 2 ){
+		var pair=[gr[0], gr[1]];
+		gletter.push(pair);
+		}
+	}
+	console.log(gletter);
+	g();
+}
+//https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+function shuffle(arr) {
+	for (var i=arr.length-1;i>=0;i--) {
+		var j=rnd(i+1);
+		var t = arr[i];
+		arr[i] = arr[j];
+		arr[j] = t;
+	}
+}
+var rLetter=0;
+var rAnswer=0;
+var dog=false;
+function byid(x){ return document.getElementById(x); }
+function g() {
+	var n=0;
+	do {
+	   n=rnd(gletter.length);
+	} while (n==rLetter);
+	rLetter=n;
+	byid('question').innerHTML='What is '+gletter[rLetter][0] + '?';
+	var ans=[];
+	for (var i=0; i<gletter.length; i++) {
+		if(i!=rLetter) ans.push(i);
+	}
+	shuffle(ans);
+	ans=[rLetter,ans[0],ans[1],ans[2]];
+	shuffle(ans);
+	for (var a=0;a<4;a++) {
+		var btn=byid("b"+(1+a));
+		btn.value=gletter[ans[a]][1];
+		btn.style.background=byid("next").style.background;
+		if (ans[a]==rLetter) {
+			rAnswer = a;
+		}
+	}
+	dog=false;
+}
+
+function f(n) {
+	if(dog) {
+		g();
+		dog=false;
+	} else {
+		dog=true;
+		byid("b"+n).style.background='#cc8888';
+		byid("b"+(rAnswer+1)).style.background='#88cc88';
+	}
+}
+
+</script>
+</head>
+<body onload="onLoad()">
+<form>
+<div id=question class=question> What is A?</div>
+<input type=button id=b1 value="1. A" class="btn" onmousedown="f(1)" >
+<input type=button id=b2 value="2. I" class="btn" onmousedown="f(2)"><br>
+<input type=button id=b3 value="3. O" class="btn" onmousedown="f(3)">
+<input type=button id=b4 value="4. U" class="btn" onmousedown="f(4)"><br>
+<input type=button id=next value="Next" class="btn2" onmousedown="g()"><br>
+</form>
+</body>
+</html>
