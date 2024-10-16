@@ -84,6 +84,7 @@ function shuffle(arr) {
 var rLetter=0;
 var rAnswer=0;
 var dog=false;
+var ifrom=0, ito=1;
 function byid(x){ return document.getElementById(x); }
 function g() {
 	var n=0;
@@ -91,7 +92,7 @@ function g() {
 	   n=rnd(gletter.length);
 	} while (n==rLetter);
 	rLetter=n;
-	byid('question').innerHTML='What is '+gletter[rLetter][0] + '?';
+	byid('question').innerHTML='What is '+gletter[rLetter][ifrom] + '?';
 	var ans=[];
 	for (var i=0; i<gletter.length; i++) {
 		if(i!=rLetter) ans.push(i);
@@ -101,7 +102,7 @@ function g() {
 	shuffle(ans);
 	for (var a=0;a<4;a++) {
 		var btn=byid("b"+(1+a));
-		btn.value=gletter[ans[a]][1];
+		btn.value=gletter[ans[a]][ito];
 		btn.style.background=byid("next").style.background;
 		if (ans[a]==rLetter) {
 			rAnswer = a;
@@ -111,7 +112,7 @@ function g() {
 }
 
 function f(n) {
-	if(dog) {
+	if(dog && n==rAnswer+1) {
 		g();
 		dog=false;
 	} else {
@@ -120,6 +121,9 @@ function f(n) {
 		byid("b"+(rAnswer+1)).style.background='#88cc88';
 	}
 }
+
+function sw(n) { var t=ito; ito=ifrom; ifrom=t; g(); }
+
 
 </script>
 </head>
@@ -130,7 +134,8 @@ function f(n) {
 <input type=button id=b2 value="2. I" class="btn" onmousedown="f(2)"><br>
 <input type=button id=b3 value="3. O" class="btn" onmousedown="f(3)">
 <input type=button id=b4 value="4. U" class="btn" onmousedown="f(4)"><br>
-<input type=button id=next value="Next" class="btn2" onmousedown="g()"><br>
+<input type=button id=next value="Next" class="btn2" onmousedown="g()"><br><br>
+<input type=button id=swap value="Swap" class="btn2" onmousedown="sw()"><br>
 </form>
 </body>
 </html>
