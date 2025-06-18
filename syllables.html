@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<!--
+Copyright (c) 2025 Alexander Izmailov
+MIT License
+-->
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<style>
+.question {
+font-size: 4em;
+}
+.btn {
+width: 300px;
+height: 200px;
+font-size: 4em;
+touch-action: manipulation;
+}
+.btn2 {
+width: 600px;
+height: 200px;
+font-size: 4em;
+touch-action: manipulation;
+}
+</style>
+<script language=javascript>
+var sdata=
+"მბე-МБЭ;"+
+"დრი-ДРИ;"+
+"რსო-РСО;"+
+"რტო-РТ!О;"+
+"სლა-СЛА;"+
+"კმა-КМА;"+
+"მღე-МГ!Э;"+
+"ქრო-К'РО;"+
+"მბა-МБА;"+
+"მბი-МБИ;"+
+"ყვე-К!ВЭ;"+
+"მმა-ММА;"+
+"მში-МШИ;"+
+"ნდუ-НДУ;"+
+"ბრე-БРЭ;"+
+"თხო-Т'ХО;"+
+"ქსე-К'СЭ;"+
+"ძლე-ДзЛЭ;"+
+"ვლა-ВЛА;"+
+"მწე-МЦ!Э;"+
+"ხვე-ХВЭ;"+
+"ლგა-ЛГА;"+
+"ნზე-НЗЭ;"+
+"დგუ-ДГУ;"+
+"ფრე-П'РЭ;"+
+"სვე-СВЭ;"+
+"რცი-РЦИ;"+
+"მრე-МРЭ;"+
+"ნვე-НВЭ;"+
+"გრი-ГРИ;"+
+"პლა-ПЛА;"+
+"დღე-ДГ!Э;"+
+"ცხა-ЦХА;"+
+"მპი-МПИ;"+
+"ქრი-К'РИ;"+
+"რვი-РВИ;"+
+"კვი-КВИ;"+
+"სფე-СП'Э;"+
+"ქცე-К'ЦЭ;"+
+"სცე-СЦЭ;"+
+"სპე-СПЭ;"+
+"მზა-МЗА;"+
+"რსა-РСА;"+
+"ლსა-ЛСА;"+
+"წყე-Ц!К!Э;"+
+"მპე-МПЭ;"+
+"რწი-РЦ!И;"+
+"ნგა-НГА;"+
+"ვსე-ВСЭ;"+
+"გვა-ГВА;"+
+"რტე-РТ!Э;"+
+"რკი-РКИ;"+
+"ქტე-К'Т!Э;"+
+"დმი-ДМИ;"+
+"ნგე-НГЭ;"+
+"მდი-МДИ;"+
+"ლდე-ЛДЭ;"+
+"თვა-Т'ВА;"+
+"ღმო-Г!МО;"+
+"ცვა-ЦВА;"+
+"რზე-РЗЭ;"+
+"რნე-РНЭ;"+
+"სკე-СКЭ;"+
+"ცნო-ЦНО;"+
+"წყა-Ц!К!А;"+
+"წვე-Ц!ВЭ;"+
+"ნსი-НСИ;"+
+"ვრი-ВРИ;"+
+"ხმა-ХМА;"+
+"რმე-РМЭ;"+
+"ტრო-Т!РО;"+
+"სპა-СПА;"+
+"თხე-Т'ХЭ;"+
+"ბრა-БРА;"+
+"ზმი-ЗМИ;"+
+"ჩვე-ЧВЭ;"+
+"კრე-КРЭ;"+
+"ფრი-П'РИ;"+
+"სკა-СКА;"+
+"სპი-СПИ;"+
+"ნტუ-НТ!У;"+
+"რგე-РГЭ;"+
+"კლი-КЛИ;"+
+"მრა-МРА;"+
+"ვნი-ВНИ;"+
+"გზა-ГЗА;"+
+"ბლა-БЛА;"+
+"პრი-ПРИ;"+
+"რბა-РБА;"+
+"მხა-МХА;"+
+"კვა-КВА;"+
+"ნტო-НТ!О;"+
+"რნი-РНИ;"+
+"გვი-ГВИ;"+
+"რმი-РМИ;"+
+"ნდო-НДО;"+
+"ნსა-НСА;"+
+"ვში-ВШИ;"+
+"ვტო-ВТ!О;"+
+"წყო-Ц!К!О;"+
+"ბრუ-БРУ;"+
+"თში-Т'ШИ;"+
+"კვე-КВЭ;"+
+"დგი-ДГИ;"+
+"რქი-РК'И;"+
+"ქტუ-К'Т!У;"+
+"ნგი-НГИ;"+
+"შვე-ШВЭ;"+
+"დრა-ДРА;"+
+"რნა-РНА;"+
+"გრე-ГРЭ;"+
+"მსა-МСА;"+
+"კლა-КЛА;"+
+"რვა-РВА;"+
+"რთე-РТ'Э;"+
+"კრა-КРА;"+
+"სკო-СКО;"+
+"ნთა-НТ'А;"+
+"რთო-РТ'О;"+
+"რსი-РСИ;"+
+"დრე-ДРЭ;"+
+"ფრა-П'РА;"+
+"ნცი-НЦИ;"+
+"ლზე-ЛЗЭ;"+
+"ფლე-П'ЛЭ;"+
+"ნში-НШИ;"+
+"ხლე-ХЛЭ;"+
+"რთუ-РТ'У;"+
+"ვრო-ВРО;"+
+"რგი-РГИ;"+
+"რში-РШИ;"+
+"ბლე-БЛЭ;"+
+"დრო-ДРО;"+
+"კლე-КЛЭ;"+
+"ნტა-НТ!А;"+
+"ქსი-К'СИ;"+
+"ქცი-К'ЦИ;"+
+"ვლი-ВЛИ;"+
+"ქმე-К'МЭ;"+
+"სმა-СМА;"+
+"ცხო-ЦХО;"+
+"კრი-КРИ;"+
+"რსე-РСЭ;"+
+"ბსა-БСА;"+
+"რგა-РГА;"+
+"პრე-ПРЭ;"+
+"სწა-СЦ!А;"+
+"რვე-РВЭ;"+
+"დგე-ДГЭ;"+
+"რდე-РДЭ;"+
+"რდი-РДИ;"+
+"მთა-МТ'А;"+
+"ვრე-ВРЭ;"+
+"რთი-РТ'И;"+
+"ბლი-БЛИ;"+
+"ტრა-Т!РА;"+
+"ქტო-К'Т!О;"+
+"ვნე-ВНЭ;"+
+"სრუ-СРУ;"+
+"ბლო-БЛО;"+
+"ქვე-К'ВЭ;"+
+"რჩე-РЧЭ;"+
+"ლში-ЛШИ;"+
+"ვდა-ВДА;"+
+"დნე-ДНЭ;"+
+"ტრი-Т!РИ;"+
+"სტო-СТ!О;"+
+"ნმა-НМА;"+
+"ქტი-К'Т!И;"+
+"ყვა-К!ВА;"+
+"სტუ-СТ!У;"+
+"სგა-СГА;"+
+"ბთა-БТ'А;"+
+"რდა-РДА;"+
+"ნდი-НДИ;"+
+"სტე-СТ!Э;"+
+"შვი-ШВИ;"+
+"რთა-РТ'А;"+
+"ნდა-НДА;"+
+"ნდე-НДЭ;"+
+"რტი-РТ!И;"+
+"ვლე-ВЛЭ;"+
+"სტა-СТ!А;"+
+"რმო-РМО;"+
+"ბდა-БДА;"+
+"გრა-ГРА;"+
+"ბრი-БРИ;"+
+"ლთა-ЛТ'А;"+
+"ბმა-БМА;"+
+"ლმა-ЛМА;"+
+"ბზე-БЗЭ;"+
+"ნტე-НТ!Э;"+
+"პრო-ПРО;"+
+"თვი-Т'ВИ;"+
+"მდე-МДЭ;"+
+"სტი-СТ!И;"+
+"ნტი-НТ!И;"+
+"რმა-РМА;"+
+"სთა-СТ'А;"+
+"ბში-БШИ;"+
+"";
+
+var gletter=Array();
+function rnd(v) {
+	return Math.floor(Math.random()*v);
+}
+function onLoad() {
+	var ssdata=sdata.split(';');
+	for (var i = 0; i < ssdata.length; i++) {
+		var gr = ssdata[i].split('-');
+		if (gr.length == 2 ){
+		var pair=[gr[0], gr[1]];
+		gletter.push(pair);
+		}
+	}
+	console.log(gletter);
+	g();
+}
+//https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+function shuffle(arr) {
+	for (var i=arr.length-1;i>=0;i--) {
+		var j=rnd(i+1);
+		var t = arr[i];
+		arr[i] = arr[j];
+		arr[j] = t;
+	}
+}
+var rLetter=0;
+var rAnswer=0;
+var dog=false;
+var ifrom=0, ito=1;
+function byid(x){ return document.getElementById(x); }
+function g() {
+	var n=0;
+	do {
+	   n=rnd(gletter.length);
+	} while (n==rLetter);
+	rLetter=n;
+	byid('question').innerHTML='What is '+gletter[rLetter][ifrom] + '?';
+	var ans=[];
+	for (var i=0; i<gletter.length; i++) {
+		if(i!=rLetter) ans.push(i);
+	}
+	shuffle(ans);
+	ans=[rLetter,ans[0],ans[1],ans[2]];
+	shuffle(ans);
+	for (var a=0;a<4;a++) {
+		var btn=byid("b"+(1+a));
+		btn.value=gletter[ans[a]][ito];
+		btn.style.background=byid("next").style.background;
+		if (ans[a]==rLetter) {
+			rAnswer = a;
+		}
+	}
+	dog=false;
+}
+
+function f(n) {
+	if(dog && n==rAnswer+1) {
+		g();
+		dog=false;
+	} else {
+		dog=true;
+		byid("b"+n).style.background='#cc8888';
+		byid("b"+(rAnswer+1)).style.background='#88cc88';
+	}
+}
+
+function sw(n) { var t=ito; ito=ifrom; ifrom=t; g(); }
+
+
+</script>
+</head>
+<body onload="onLoad()">
+<form>
+<div id=question class=question> What is A?</div>
+<input type=button id=b1 value="1. A" class="btn" onmousedown="f(1)" >
+<input type=button id=b2 value="2. I" class="btn" onmousedown="f(2)"><br>
+<input type=button id=b3 value="3. O" class="btn" onmousedown="f(3)">
+<input type=button id=b4 value="4. U" class="btn" onmousedown="f(4)"><br>
+<input type=button id=next value="Next" class="btn2" onmousedown="g()"><br><br>
+<input type=button id=swap value="Swap" class="btn2" onmousedown="sw()"><br>
+</form>
+<a href="https://github.com/yarolig/QuickQuiz">Quick quiz for Georgian letters</a>
+</body>
+</html>
