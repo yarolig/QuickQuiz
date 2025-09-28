@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<!--
+Copyright (c) 2024 Alexander Izmailov
+MIT License
+-->
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<style>
+.question {
+font-size: 4em;
+}
+.btn {
+width: 300px;
+height: 200px;
+font-size: 4em;
+touch-action: manipulation;
+}
+.btn2 {
+width: 600px;
+height: 200px;
+font-size: 4em;
+touch-action: manipulation;
+}
+</style>
+<script language=javascript>
+var sdata=
+"ა-а;"+
+"ბ-б;"+
+"გ-г;"+
+"დ-д;"+
+"ე-э;"+
+"ვ-в;"+
+"ზ-з;"+
+"თ-т';"+
+"ი-и;"+
+"კ-к;"+
+"ლ-л;"+
+"მ-м;"+
+"ნ-н;"+
+"ო-о;"+
+"პ-п;"+
+"ჟ-ж;"+
+"რ-р;"+
+"ს-с;"+
+"ტ-Т;"+
+"უ-у;"+
+"ფ-п';"+
+"ქ-к';"+
+"ღ-г';"+
+"ყ-к;"+
+"შ-ш;"+
+"ჩ-ч;"+
+"ც-ц;"+
+"ძ-дз;"+
+"წ-Ц;"+
+"ჭ-ч;"+
+"ხ-х;"+
+"ჯ-дж;"+
+"ჰ-х';"+
+"ჭ-ч';";
+
+var gletter=Array();
+function rnd(v) {
+	return Math.floor(Math.random()*v);
+}
+function onLoad() {
+	var ssdata=sdata.split(';');
+	for (var i = 0; i < ssdata.length; i++) {
+		var gr = ssdata[i].split('-');
+		if (gr.length == 2 ){
+		var pair=[gr[0], gr[1]];
+		gletter.push(pair);
+		}
+	}
+	console.log(gletter);
+}
+//https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+function shuffle(arr) {
+	for (var i=arr.length-1;i>=0;i--) {
+		var j=rnd(i+1);
+		var t = arr[i];
+		arr[i] = arr[j];
+		arr[j] = t;
+	}
+}
+var rLetter=0;
+var rAnswer=0;
+var dog=false;
+var ifrom=0, ito=1;
+function byid(x){ return document.getElementById(x); }
+function g() {
+	var n=0;
+	do {
+	   n=rnd(gletter.length);
+	} while (n==rLetter);
+	rLetter=n;
+	byid('question').innerHTML='What is '+gletter[rLetter][ifrom] + '?';
+	var ans=[];
+	for (var i=0; i<gletter.length; i++) {
+		if(i!=rLetter) ans.push(i);
+	}
+	shuffle(ans);
+	ans=[rLetter,ans[0],ans[1],ans[2]];
+	shuffle(ans);
+	for (var a=0;a<4;a++) {
+		var btn=byid("b"+(1+a));
+		btn.value=gletter[ans[a]][ito];
+		btn.style.background=byid("next").style.background;
+		if (ans[a]==rLetter) {
+			rAnswer = a;
+		}
+	}
+	dog=false;
+}
+
+function f(n) {
+	if(dog && n==rAnswer+1) {
+		g();
+		dog=false;
+	} else {
+		dog=true;
+		byid("b"+n).style.background='#cc8888';
+		byid("b"+(rAnswer+1)).style.background='#88cc88';
+	}
+}
+
+function sw(n) { var t=ito; ito=ifrom; ifrom=t; g(); }
+
+function tr() {
+    var s = byid('tlfrom').value;
+    for (var i=0; i<gletter.length; i++) {
+        s=s.split(gletter[i][0]).join(gletter[i][1]);
+    }
+    byid('tlto').value=s;
+}
+
+
+</script>
+</head>
+<body onload="onLoad()">
+<form>
+<div id=question class=question> Transliterate</div>
+<textarea id="tlfrom" rows=10 cols=60></textarea><br>
+<input type=button id=tl value="Transliterate" class="tl" onmousedown="tr()"><br>
+<textarea id="tlto" rows=10 cols=60></textarea><br>
+</form>
+<a href="https://github.com/yarolig/QuickQuiz">Quick quiz for Georgian letters</a>
+</body>
+</html>
